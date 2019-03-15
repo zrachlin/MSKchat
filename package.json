@@ -40,7 +40,7 @@
     "redux-devtools-extension": "^2.13.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "sequelize": "^4.4.0",
+    "sequelize": "^5.1.0",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
@@ -50,7 +50,9 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "chai": "^4.2.0",
     "css-loader": "^1.0.0",
+    "mocha": "^6.0.2",
     "nodemon": "^1.18.3",
     "style-loader": "^0.21.0",
     "webpack": "^4.16.1",
