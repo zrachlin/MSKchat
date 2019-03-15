@@ -29,7 +29,7 @@ router.post('/', async (req, res, next) => {
 // GET /api/channels/:channelId
 router.get('/:channelId', async (req, res, next) => {
   try {
-    const channel = await Channel.findById(req.params.channelId);
+    const channel = await Channel.findOne({where:{id:req.params.channelId}});
     res.json(channel);
   } catch (error) {
     next(error);

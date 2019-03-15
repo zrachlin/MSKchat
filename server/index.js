@@ -21,9 +21,11 @@ if (process.env.NODE_ENV === 'test') {
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id));
 
+const { User } = require('./db/models');
+
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await db.models.user.findById(id);
+    const user = await User.findOne({ where: { id } });
     done(null, user);
   } catch (err) {
     done(err);

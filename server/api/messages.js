@@ -16,8 +16,13 @@ router.get('/', async (req, res, next) => {
 // POST /api/messages
 router.post('/', async (req, res, next) => {
   try {
-    const { content } = req.body;
-    const message = await Message.create({ content, userId: req.user.id });
+    console.log(req.body);
+    const { content, channelId } = req.body;
+    const message = await Message.create({
+      content,
+      userId: req.user.id,
+      channelId,
+    });
     res.json(message);
   } catch (err) {
     next(err);
@@ -30,7 +35,7 @@ router.post('/', async (req, res, next) => {
 router.put('/:messageId', async (req, res, next) => {
   try {
     const messageId = req.params.messageId;
-    const message = await Message.findById(messageId);
+    const message = await Message.findOne({ where: { id: messageId } });
     await message.update(req.body);
     res.status(204).end();
   } catch (err) {

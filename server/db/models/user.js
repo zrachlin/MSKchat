@@ -23,6 +23,7 @@ const User = db.define('user', {
   },
   image: {
     type: Sequelize.STRING,
+    defaultValue: 'https://media.glassdoor.com/sqll/4711/memorial-sloan-kettering-squarelogo-1390842863514.png'
   },
 });
 
