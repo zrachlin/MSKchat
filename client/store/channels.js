@@ -1,10 +1,8 @@
 import axios from 'axios';
-import socket from './socket';
+import socket from '../socket';
 
 // Initial State
-const initialState = {
-  channels: [],
-};
+const initialChannels = [];
 
 // Action Types
 const GET_CHANNELS = 'GET_CHANNELS';
@@ -27,28 +25,23 @@ export const fetchChannels = () => {
   };
 };
 
-export const postChannel = channel => {
+export const postChannel = (channel, history) => {
   return async dispatch => {
     const { data: newChannel } = await axios.post('/api/channels', channel);
     dispatch(getChannel(newChannel));
     socket.emit('new-channel', newChannel);
+    history.push(`/channels/${newChannel.id}`);
   };
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (channels = initialChannels, action) => {
   switch (action.type) {
     case GET_CHANNELS:
-      return {
-        ...state,
-        channels: action.channels,
-      };
+      return action.channels;
     case GET_CHANNEL:
-      return {
-        ...state,
-        channels: [...state.channels, action.channel],
-      };
+      return [...channels, action.channel];
     default:
-      return state;
+      return channels;
   }
 };
 
