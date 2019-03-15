@@ -15,9 +15,9 @@ class NewMessageEntry extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
 
-    const { name, draftContent, channelId } = this.props;
+    const { draftContent, channelId } = this.props;
 
-    this.props.postMessage({ name, content: draftContent, channelId });
+    this.props.postMessage({ content: draftContent, channelId });
     this.props.draftMessage('', channelId);
   }
 
