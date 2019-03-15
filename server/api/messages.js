@@ -16,14 +16,16 @@ router.get('/', async (req, res, next) => {
 // POST /api/messages
 router.post('/', async (req, res, next) => {
   try {
-    console.log(req.body);
     const { content, channelId } = req.body;
-    const message = await Message.create({
+    const message = Message.build({
       content,
       userId: req.user.id,
       channelId,
     });
-    res.json(message);
+    await message.save();
+    const returnMessage = message.toJSON();
+    returnMessage.user = req.user;
+    res.json(returnMessage);
   } catch (err) {
     next(err);
   }
