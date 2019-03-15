@@ -8,8 +8,8 @@ const initialState = {
 };
 
 // Action Types
-const GET_MESSAGE = 'GET_MESSAGE';
 const GET_MESSAGES = 'GET_MESSAGES';
+const GET_MESSAGE = 'GET_MESSAGE';
 const DRAFT_MESSAGE = 'DRAFT_MESSAGE';
 
 // Action Creators
