@@ -18,18 +18,25 @@ const seed = async () => {
   ]);
   console.log(`Seeded ${channels.length} channels.`);
 
+  const general = await Channel.findOne({ where: { name: 'general' } });
+  const jobs = await Channel.findOne({ where: { name: 'jobs' } });
+
   const messages = await Promise.all([
-    Message.create({ userId: 1, content: 'Hi there', channelId: 1 }),
-    Message.create({ userId: 2, content: 'Yooo', channelId: 1 }),
+    Message.create({ userId: 1, content: 'Hi there', channelId: general.id }),
+    Message.create({
+      userId: 2,
+      content: 'Good Morning!',
+      channelId: general.id,
+    }),
     Message.create({
       userId: 3,
       content: 'I need to hire someone to do full-stack engineering',
-      channelId: 2,
+      channelId: jobs.id,
     }),
     Message.create({
-      userId1: 1,
+      userId: 1,
       content: 'You should hire Zach Rachlin',
-      channelId: 2,
+      channelId: jobs.id,
     }),
   ]);
   console.log(`Seeded ${messages.length} messages.`);
