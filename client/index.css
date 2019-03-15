@@ -46,7 +46,6 @@ body {
 }
 
 .sidebar ul {
-  text-transform: lowercase;
   list-style-type: none;
   margin: 0;
   padding: 0;
