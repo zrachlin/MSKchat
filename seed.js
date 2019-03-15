@@ -21,6 +21,11 @@ const seed = async () => {
   const general = await Channel.findOne({ where: { name: 'general' } });
   const jobs = await Channel.findOne({ where: { name: 'jobs' } });
 
+  // setTimeout(async () => {
+  //   general.updatedAt = new Date()
+  //   await general.save()
+  // }, 10000);
+
   const messages = await Promise.all([
     Message.create({ userId: 1, content: 'Hi there', channelId: general.id }),
     Message.create({
@@ -51,6 +56,10 @@ async function runSeed() {
     process.exitCode = 1;
   } finally {
     console.log('closing db connection');
+    // setTimeout(async () => {
+    //   await db.close();
+    //   console.log('db connection closed');
+    // }, 20000);
     await db.close();
     console.log('db connection closed');
   }

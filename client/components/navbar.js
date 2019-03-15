@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { logout } from '../store';
 
 //to-do: add user name and log out here -> will have to connect it to redux
@@ -24,7 +24,7 @@ class Navbar extends Component {
 
     return (
       <nav>
-        <h3>{isLoggedIn ? this.getChannelString() : 'Welcome to MSKchat!'}</h3>
+        <h3>{isLoggedIn ? this.getChannelString() : 'Welcome to MSK Chat!'}</h3>
         {isLoggedIn ? (
           <div>
             Hi {username}!
@@ -45,11 +45,12 @@ class Navbar extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     isLoggedIn: !!state.user.id,
     username: state.user.username,
     channels: state.channels,
+    pathname: ownProps.location.pathname,
   };
 };
 
@@ -61,10 +62,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Navbar);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Navbar)
+);
 
 /**
  * PROP TYPES

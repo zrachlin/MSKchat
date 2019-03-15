@@ -4,17 +4,21 @@ import { NavLink, withRouter } from 'react-router-dom';
 
 class ChannelList extends Component {
   createChannelLI(channel) {
-    const { messages } = this.props;
+    const { messages, pathname } = this.props;
+    const channelId = Number(pathname.split('/').slice(-1));
+
     return (
       <li key={channel.id}>
         <NavLink to={`/channels/${channel.id}`} activeClassName="active">
           <span># {channel.name}</span>
-          <span className="badge">
-            {
-              messages.filter(message => message.channelId === channel.id)
-                .length
-            }
-          </span>
+          {channelId !== channel.id ? (
+            <span className="badge">
+              {
+                messages.filter(message => message.channelId === channel.id)
+                  .length
+              }
+            </span>
+          ) : null}
         </NavLink>
       </li>
     );
@@ -46,10 +50,11 @@ class ChannelList extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     messages: state.messages.messages,
     channels: state.channels,
+    pathname: ownProps.location.pathname,
   };
 };
 

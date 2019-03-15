@@ -22,10 +22,7 @@ class Routes extends Component {
 
     return (
       <div>
-        <Navbar
-          pathname={this.props.location.pathname}
-          history={this.props.history}
-        />
+        <Navbar />
         {isLoggedIn ? <Sidebar /> : null}
         <main>
           <Switch>
