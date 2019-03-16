@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 
 class ChannelList extends Component {
+  // componentDidMount() {
+  //   const { userId } = this.props;
+  //   console.log('incdm', this.props);
+  //   this.props.fetchUnreadMessageCounts(userId);
+  // }
   createChannelLI(channel) {
     const { messages, pathname } = this.props;
     const channelId = Number(pathname.split('/').slice(-1));

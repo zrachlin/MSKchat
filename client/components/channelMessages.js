@@ -14,9 +14,11 @@ class ChannelMessages extends Component {
     return (
       <div>
         <ul className="media-list">
-          {channelMessages.map(message => (
-            <Message message={message} key={message.id} />
-          ))}
+          {channelMessages
+            .sort((a, b) => a.id - b.id)
+            .map(message => (
+              <Message message={message} key={message.id} />
+            ))}
         </ul>
         <NewMessageEntry channelId={channelId} />
       </div>

@@ -21,29 +21,24 @@ const seed = async () => {
   const general = await Channel.findOne({ where: { name: 'general' } });
   const jobs = await Channel.findOne({ where: { name: 'jobs' } });
 
-  // setTimeout(async () => {
-  //   general.updatedAt = new Date()
-  //   await general.save()
-  // }, 10000);
-
   const messages = await Promise.all([
     Message.create({ userId: 1, content: 'Hi there', channelId: general.id }),
     Message.create({
       userId: 2,
       content: 'Good Morning!',
       channelId: general.id,
-    }),
-    Message.create({
+    })])
+    const m1 = await Message.create({
       userId: 3,
       content: 'I need to hire someone to do full-stack engineering',
       channelId: jobs.id,
-    }),
-    Message.create({
+    })
+    const m2 = await Message.create({
       userId: 1,
       content: 'You should hire Zach Rachlin',
       channelId: jobs.id,
-    }),
-  ]);
+    })
+    messages.push(m1,m2)
   console.log(`Seeded ${messages.length} messages.`);
 };
 
@@ -56,10 +51,6 @@ async function runSeed() {
     process.exitCode = 1;
   } finally {
     console.log('closing db connection');
-    // setTimeout(async () => {
-    //   await db.close();
-    //   console.log('db connection closed');
-    // }, 20000);
     await db.close();
     console.log('db connection closed');
   }
