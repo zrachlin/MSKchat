@@ -15,6 +15,8 @@ const seed = async () => {
   const channels = await Promise.all([
     Channel.create({ name: 'general' }),
     Channel.create({ name: 'jobs' }),
+    Channel.create({ name: 'random' }),
+    Channel.create({ name: 'machine-learning' }),
   ]);
   console.log(`Seeded ${channels.length} channels.`);
 
@@ -27,18 +29,20 @@ const seed = async () => {
       userId: 2,
       content: 'Good Morning!',
       channelId: general.id,
-    })])
-    const m1 = await Message.create({
-      userId: 3,
-      content: 'I need to hire someone to do full-stack engineering',
-      channelId: jobs.id,
-    })
-    const m2 = await Message.create({
-      userId: 1,
-      content: 'You should hire Zach Rachlin',
-      channelId: jobs.id,
-    })
-    messages.push(m1,m2)
+    }),
+  ]);
+  const m1 = await Message.create({
+    userId: 3,
+    content: 'I need to hire someone to do full-stack engineering ASAP',
+    channelId: jobs.id,
+  });
+  const m2 = await Message.create({
+    userId: 1,
+    content: 'You should definitely hire Zach Rachlin!',
+    channelId: jobs.id,
+  });
+
+  messages.push(m1, m2);
   console.log(`Seeded ${messages.length} messages.`);
 };
 

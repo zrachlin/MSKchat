@@ -12,6 +12,7 @@ const Sidebar = () => {
       </div>
       <h5>Channels</h5>
       <ChannelList />
+      <h5 id="created-footer">Created by Zach Rachlin</h5>
     </section>
   );
 };
