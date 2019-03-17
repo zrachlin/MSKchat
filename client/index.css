@@ -156,12 +156,25 @@ main > div {
   flex: 1 1 auto;
 }
 
-main .form {
+#form-screen {
+  background-image: url('https://media.giphy.com/media/3o7TKz2eMXx7dn95FS/giphy.gif');
+  background-color: #cccccc;
+  background-size: cover;
   align-items: center;
+  margin: -53px -25px -25px -25px;
+  padding: 0;
+}
+
+.form-div {
+  background-color: lightskyblue;
+  padding: 20px;
+  opacity: 0.8;
+  margin-top: 25vh;
 }
 
 .login-signup-input {
   margin: 5px 10px;
+  opacity: 1;
 }
 
 /* message form */
