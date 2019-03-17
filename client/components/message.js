@@ -14,8 +14,13 @@ const Message = props => {
         </a>
       </div>
       <div className="media-body">
-        <h4 className="media-heading">{message.user.username}</h4>
-        {message.content}
+        <div className="media-heading">
+          <h4>{message.user.username}</h4>
+          <h5>
+            {new Date(message.createdAt.replace('T', ' ')).toLocaleString()}
+          </h5>
+        </div>
+        <div clasName="media-content">{message.content}</div>
       </div>
     </li>
   ) : null;

@@ -15,7 +15,10 @@ class NewChannelEntry extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.createChannel({ name: this.state.channelName });
+    this.props.createChannel({
+      name: this.state.channelName,
+      creatorId: this.props.userId,
+    });
   }
 
   render() {
@@ -41,6 +44,12 @@ class NewChannelEntry extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    userId: state.user.id,
+  };
+};
+
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     createChannel: channel => dispatch(postChannel(channel, ownProps.history)),
@@ -48,6 +57,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NewChannelEntry);

@@ -15,6 +15,9 @@ User.hasMany(Message);
 // Gives each message a userId
 Message.belongsTo(User);
 
+// // Gives each channel a userId
+Channel.belongsTo(User, { as: 'creator' });
+
 // Users' last visits to channel through-table
 Channel.belongsToMany(User, { through: LastVisit });
 User.belongsToMany(Channel, { through: LastVisit });

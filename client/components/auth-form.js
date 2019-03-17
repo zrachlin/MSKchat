@@ -7,20 +7,26 @@ const AuthForm = props => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
-    <main>
+    <main className='form'>
+      <h1>Welcome to MSK Chat!</h1>
+      <h3>{displayName} To Start Chatting!</h3>
       <div>
         <form onSubmit={handleSubmit} name={name}>
           <div>
             <label htmlFor="username">
               <small>Username</small>
             </label>
-            <input name="username" type="text" />
+            <input className="login-signup-input" name="username" type="text" />
           </div>
           <div>
             <label htmlFor="password">
               <small>Password</small>
             </label>
-            <input name="password" type="password" />
+            <input
+              className="login-signup-input"
+              name="password"
+              type="password"
+            />
           </div>
           <div>
             <button type="submit">{displayName}</button>

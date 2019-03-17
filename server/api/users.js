@@ -60,7 +60,6 @@ router.get('/me/unread-message-counts/:channelId', async (req, res, next) => {
 
 router.put('/me/latest-channel-visits/:channelId', async (req, res, next) => {
   try {
-    console.log('hi');
     const [channelVisit, created] = await LastVisit.findOrCreate({
       where: { userId: req.user.id, channelId: req.params.channelId },
     });

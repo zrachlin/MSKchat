@@ -82,6 +82,10 @@ body {
   margin-right: 10px;
 }
 
+.sidebar hr {
+  margin: 3px;
+}
+
 /* nav */
 
 nav {
@@ -116,6 +120,8 @@ main {
 main .media-list {
   overflow-y: scroll;
   flex: 1 1 auto;
+  max-width: 78vw;
+  padding-right: 40px;
 }
 
 main .media img {
@@ -127,10 +133,29 @@ main .media-object {
   border-radius: 5px;
 }
 
+main .media-body {
+  padding: 0px;
+}
+
+main .media-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px;
+}
+
 main > div {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+}
+
+main .form {
+  align-items: center;
+}
+
+.login-signup-input {
+  margin: 5px 10px;
 }
 
 /* message form */

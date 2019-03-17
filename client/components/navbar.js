@@ -24,11 +24,11 @@ class Navbar extends Component {
 
     return (
       <nav>
-        <h3>{isLoggedIn ? this.getChannelString() : 'Welcome to MSK Chat!'}</h3>
+        {isLoggedIn ? <h3>{this.getChannelString()}</h3> : null}
         {isLoggedIn ? (
           <div>
+            {/* The navbar will show this after you log in */}
             Hi {username}!
-            {/* The navbar will show these links after you log in */}
             <a href="#" onClick={() => handleClick(history)}>
               Logout
             </a>

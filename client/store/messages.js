@@ -19,7 +19,6 @@ export const getMessages = messages => {
 };
 
 export const getMessage = message => {
-  console.log('hi');
   return { type: GET_MESSAGE, message };
 };
 

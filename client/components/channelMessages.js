@@ -7,7 +7,6 @@ import { fetchUnreadMessageCounts } from '../store';
 class ChannelMessages extends Component {
   async componentDidMount() {
     const channelId = this.props.match.params.channelId;
-    console.log('cid', channelId);
     await axios.put(`/api/users/me/latest-channel-visits/${channelId}`);
     this.props.fetchUnreadMessageCounts();
   }
@@ -32,9 +31,13 @@ class ChannelMessages extends Component {
       <div>
         <ul className="media-list">
           {channelMessages
-            .sort((a, b) => a.id - b.id)
+            .sort((a, b) => (a.createdAt > b.createdAt ? 1 : -1))
             .map(message => (
-              <Message message={message} key={message.id} />
+              <Message
+                message={message}
+                key={message.id}
+                userId={this.props.userId}
+              />
             ))}
         </ul>
         <NewMessageEntry channelId={channelId} />
@@ -46,6 +49,7 @@ class ChannelMessages extends Component {
 const mapStateToProps = state => {
   return {
     messages: state.messages.messages,
+    userId: state.user.id,
   };
 };
 

@@ -9,25 +9,28 @@ class ChannelList extends Component {
   // }
 
   createChannelLI(channel) {
-    const { messages, pathname, unreadCounts } = this.props;
+    const { pathname, unreadCounts } = this.props;
     const channelId = Number(pathname.split('/').slice(-1));
-    let unreadCount = 0;
+    let unreadCount = null;
     if (unreadCounts) {
-      const unreadObj = unreadCounts.find(el => el.channelId == channel.id);
+      const unreadObj = unreadCounts.find(el => el.channelId === channel.id);
       if (unreadObj) {
         unreadCount = unreadObj.count;
       }
     }
 
     return (
-      <li key={channel.id}>
-        <NavLink to={`/channels/${channel.id}`} activeClassName="active">
-          <span># {channel.name}</span>
-          {channelId !== channel.id ? (
-            <span className="badge">{unreadCount}</span>
-          ) : null}
-        </NavLink>
-      </li>
+      <div key={channel.id}>
+        <li>
+          <NavLink to={`/channels/${channel.id}`} activeClassName="active">
+            <span># {channel.name}</span>
+            {channelId !== channel.id && unreadCount > 0 ? (
+              <span className="badge">{unreadCount}</span>
+            ) : null}
+          </NavLink>
+        </li>
+        {channel.name === 'general' ? <hr /> : null}
+      </div>
     );
   }
 
@@ -45,10 +48,10 @@ class ChannelList extends Component {
           channels
             .filter(channel => channel.name !== 'general')
             .sort(function(a, b) {
-              return a.name.toLowerCase() > b.name.toLowerCase();
+              return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
             })
             .map(channel => this.createChannelLI(channel))}
-
+        <hr />
         <li>
           <NavLink to="/new-channel">Create a channel...</NavLink>
         </li>
