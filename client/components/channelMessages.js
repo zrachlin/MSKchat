@@ -20,6 +20,12 @@ class ChannelMessages extends Component {
     }
   }
 
+  async componentWillUnmount() {
+    const channelId = this.props.match.params.channelId;
+    await axios.put(`/api/users/me/latest-channel-visits/${channelId}`);
+    this.props.fetchUnreadMessageCounts();
+  }
+
   render() {
     const channelId = Number(this.props.match.params.channelId);
     const channelMessages = this.props.messages.filter(
