@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
+import { fetchUnreadMessageCounts } from '../store';
 
 class ChannelList extends Component {
   // componentDidMount() {
-  //   const { userId } = this.props;
-  //   console.log('incdm', this.props);
-  //   this.props.fetchUnreadMessageCounts(userId);
+  //   this.props.fetchUnreadMessageCounts();
   // }
+
   createChannelLI(channel) {
-    const { messages, pathname } = this.props;
+    const { messages, pathname, unreadCounts } = this.props;
     const channelId = Number(pathname.split('/').slice(-1));
 
     return (
@@ -19,8 +19,8 @@ class ChannelList extends Component {
           {channelId !== channel.id ? (
             <span className="badge">
               {
-                messages.filter(message => message.channelId === channel.id)
-                  .length
+                unreadCounts?unreadCounts.find(unreadObj => unreadObj.channelId === channel.id)
+                  .count:0
               }
             </span>
           ) : null}
@@ -60,12 +60,19 @@ const mapStateToProps = (state, ownProps) => {
     messages: state.messages.messages,
     channels: state.channels,
     pathname: ownProps.location.pathname,
+    unreadCounts: state.user.unreadCounts,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchUnreadMessageCounts: () => dispatch(fetchUnreadMessageCounts()),
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
   )(ChannelList)
 );

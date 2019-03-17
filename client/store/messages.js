@@ -12,7 +12,6 @@ const initialState = {
 const GET_MESSAGES = 'GET_MESSAGES';
 const GET_MESSAGE = 'GET_MESSAGE';
 const DRAFT_MESSAGE = 'DRAFT_MESSAGE';
-const GET_UNREAD_MESSAGE_COUNTS = 'GET_UNREAD_MESSAGE_COUNTS';
 
 // Action Creators
 export const getMessages = messages => {
@@ -28,10 +27,6 @@ export const draftMessage = (content, channelId) => {
   return { type: DRAFT_MESSAGE, content, channelId };
 };
 
-export const getUnreadMessageCounts = unreadCounts => {
-  return { type: GET_UNREAD_MESSAGE_COUNTS, unreadCounts };
-};
-
 // Thunk Creators
 export const fetchMessages = () => {
   return async dispatch => {
@@ -45,15 +40,6 @@ export const postMessage = message => {
     const { data: newMessage } = await axios.post('/api/messages', message);
     dispatch(getMessage(newMessage));
     socket.emit('new-message', newMessage);
-  };
-};
-
-export const fetchUnreadMessageCounts = userId => {
-  return async dispatch => {
-    const { data: unreadMessagesArray } = await axios.get(
-      `/api/users/${userId}/unread-message-counts`
-    );
-    dispatch(getMessage(unreadMessagesArray));
   };
 };
 
@@ -77,11 +63,7 @@ const reducer = (state = initialState, action) => {
           [action.channelId]: action.content,
         },
       };
-    case GET_UNREAD_MESSAGE_COUNTS:
-      return {
-        ...state,
-        unreadCounts: action.unreadCounts,
-      };
+
     default:
       return state;
   }

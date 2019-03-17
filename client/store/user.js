@@ -6,10 +6,15 @@ const defaultUser = {};
 // Action Types
 const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
+const GET_UNREAD_MESSAGE_COUNTS = 'GET_UNREAD_MESSAGE_COUNTS';
 
 // Action Creators
 const getUser = user => ({ type: GET_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
+
+export const getUnreadMessageCounts = unreadCounts => {
+  return { type: GET_UNREAD_MESSAGE_COUNTS, unreadCounts };
+};
 
 // Thunk Creators
 export const me = () => async dispatch => {
@@ -47,6 +52,16 @@ export const logout = history => async dispatch => {
   }
 };
 
+export const fetchUnreadMessageCounts = () => {
+  return async dispatch => {
+    const { data: unreadMessagesObj } = await axios.get(
+      `/api/users/me/unread-message-counts`
+    );
+    const { unreadMessagesArray } = unreadMessagesObj;
+    dispatch(getUnreadMessageCounts(unreadMessagesArray));
+  };
+};
+
 /**
  * REDUCER
  */
@@ -56,6 +71,11 @@ export default function(state = defaultUser, action) {
       return action.user;
     case REMOVE_USER:
       return defaultUser;
+    case GET_UNREAD_MESSAGE_COUNTS:
+      return {
+        ...state,
+        unreadCounts: action.unreadCounts,
+      };
     default:
       return state;
   }
