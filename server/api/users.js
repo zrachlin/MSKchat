@@ -9,7 +9,7 @@ router.get('/:userId/unread-message-counts', async (req, res, next) => {
   try {
     if (Number(req.user.id) === Number(req.params.userId)) {
       const channels = await Channel.findAll();
-      const unreadMessageArray = await Promise.all(
+      const unreadMessagesArray = await Promise.all(
         channels.map(async channel => {
           const latestVisit = await LastVisit.findOne({
             where: {
@@ -30,7 +30,7 @@ router.get('/:userId/unread-message-counts', async (req, res, next) => {
           return { channelId: channel.id, count: unreadMessages.length };
         })
       );
-      res.json(unreadMessageArray);
+      res.json({ unreadMessagesArray });
     } else {
       res.send('Permission Denied');
     }
