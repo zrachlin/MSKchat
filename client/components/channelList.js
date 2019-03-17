@@ -11,18 +11,20 @@ class ChannelList extends Component {
   createChannelLI(channel) {
     const { messages, pathname, unreadCounts } = this.props;
     const channelId = Number(pathname.split('/').slice(-1));
+    let unreadCount = 0;
+    if (unreadCounts) {
+      const unreadObj = unreadCounts.find(el => el.channelId == channel.id);
+      if (unreadObj) {
+        unreadCount = unreadObj.count;
+      }
+    }
 
     return (
       <li key={channel.id}>
         <NavLink to={`/channels/${channel.id}`} activeClassName="active">
           <span># {channel.name}</span>
           {channelId !== channel.id ? (
-            <span className="badge">
-              {
-                unreadCounts?unreadCounts.find(unreadObj => unreadObj.channelId === channel.id)
-                  .count:0
-              }
-            </span>
+            <span className="badge">{unreadCount}</span>
           ) : null}
         </NavLink>
       </li>
