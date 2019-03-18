@@ -20,7 +20,7 @@ const Message = props => {
             {new Date(message.createdAt.replace('T', ' ')).toLocaleString()}
           </h5>
         </div>
-        <div clasName="media-content">{message.content}</div>
+        <div className="media-content">{message.content}</div>
       </div>
     </li>
   ) : null;

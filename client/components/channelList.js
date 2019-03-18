@@ -39,6 +39,7 @@ class ChannelList extends Component {
 
     return (
       <ul>
+        <div>
         {/* Always show general channel at the top */}
         {channels.length &&
           this.createChannelLI(
@@ -51,6 +52,7 @@ class ChannelList extends Component {
               return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
             })
             .map(channel => this.createChannelLI(channel))}
+        </div>
         <hr />
         <li>
           <NavLink to="/new-channel">Create a channel...</NavLink>

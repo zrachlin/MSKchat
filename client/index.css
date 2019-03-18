@@ -50,6 +50,10 @@ body {
   margin: 0;
   padding: 0;
 }
+.sidebar ul div {
+  max-height: 75vh;
+  overflow-y: scroll;
+}
 
 .sidebar ul li {
   height: 28px;
