@@ -32,7 +32,7 @@ class NewMessageEntry extends Component {
             name="content"
             value={draftContent || ''}
             onChange={this.handleChange}
-            placeholder="Whatcha thinkin?"
+            placeholder="What's on your mind?"
           />
           <span className="input-group-btn">
             <button className="btn btn-default" type="submit">
