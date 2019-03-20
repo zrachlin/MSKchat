@@ -72,5 +72,5 @@ The database will temporarily be cleared for testing purposes, but it should aut
 - Notifications
 - Delete channels and messages (if you are a member and the messages are your own)
 - Admin capability
-- Emoji support :frown -> :smile
+- Emoji support :disappointed: -> :smiley:
 - File/image upload support
