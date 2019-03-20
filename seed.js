@@ -66,7 +66,7 @@ const seed = async () => {
   const m1 = await Message.create({
     userId: 3,
     content:
-      'I need to hire someone to do full-stack software development for the DHI ASAP',
+      'I need to hire someone to do full-stack software development ASAP',
     channelId: jobs.id,
   });
   const m2 = await Message.create({
@@ -92,6 +92,7 @@ async function runSeed() {
     console.log('db connection closed');
   }
 }
+module.exports = runSeed;
 
 if (module === require.main) {
   runSeed();
