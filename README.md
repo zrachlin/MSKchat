@@ -74,3 +74,7 @@ The database will temporarily be cleared for testing purposes, but it should aut
 - Admin capability
 - Emoji support :disappointed: -> :smiley:
 - File/image upload support
+
+## Screenshots
+![Login-Screen](/public/login-screen.png)
+![Chatroom-Screen](/public/chatroom-screen.png)
