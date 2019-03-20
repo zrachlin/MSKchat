@@ -28,11 +28,13 @@ This will seed the database and then start the server on Port 8080 and create th
 
 In your browser, navigate to `localhost:8080`.
 
-You should be all set and ready to chat! Feel free to create your own account by clicking on the "Sign Up" tab on the top. Alternatively, you can log in as any of the following sample users:
+You should be all set and ready to chat!
 
-- username: user1, password: 123
-- username: user2, password: 234
-- username: user3, password: 345
+Feel free to create your own account by clicking on the "Sign Up" tab on the top. Alternatively, you can log in as any of the following sample users:
+
+- username: 'user1', password: '123'
+- username: 'user2', password: '234'
+- username: 'user3', password: '345'
 
 On all subsequent starts, you can just use the following command:
 
@@ -65,6 +67,10 @@ The database will temporarily be cleared for testing purposes, but it should aut
 
 ## Desired Features
 
-- Display channel creator
+- Display the channel creator
 - Private channels and/or the ability to create a channel and invite other users
 - Notifications
+- Delete channels and messages (if you are a member and the messages are your own)
+- Admin capability
+- Emoji support :frown -> :smile
+- File/image upload support
