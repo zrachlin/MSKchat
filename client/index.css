@@ -96,6 +96,10 @@ body {
   margin-left: 10px;
 }
 
+#new-channel-link {
+  font-weight: bolder;
+}
+
 /* nav */
 
 nav {

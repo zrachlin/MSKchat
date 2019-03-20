@@ -5,8 +5,8 @@ import socket from '../socket';
 const initialChannels = [];
 
 // Action Types
-const GET_CHANNELS = 'GET_CHANNELS';
-const GET_CHANNEL = 'GET_CHANNEL';
+export const GET_CHANNELS = 'GET_CHANNELS';
+export const GET_CHANNEL = 'GET_CHANNEL';
 
 // Action Creators
 export const getChannels = channels => {

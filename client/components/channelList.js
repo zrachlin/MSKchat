@@ -40,21 +40,21 @@ class ChannelList extends Component {
     return (
       <ul>
         <div>
-        {/* Always show general channel at the top */}
-        {channels.length &&
-          this.createChannelLI(
-            channels.find(channel => channel.name === 'general')
-          )}
-        {channels.length &&
-          channels
-            .filter(channel => channel.name !== 'general')
-            .sort(function(a, b) {
-              return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
-            })
-            .map(channel => this.createChannelLI(channel))}
+          {/* Always show general channel at the top */}
+          {channels.length &&
+            this.createChannelLI(
+              channels.find(channel => channel.name === 'general')
+            )}
+          {channels.length &&
+            channels
+              .filter(channel => channel.name !== 'general')
+              .sort(function(a, b) {
+                return a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1;
+              })
+              .map(channel => this.createChannelLI(channel))}
         </div>
         <hr />
-        <li>
+        <li id="new-channel-link">
           <NavLink to="/new-channel">Create a channel...</NavLink>
         </li>
       </ul>

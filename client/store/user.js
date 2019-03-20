@@ -4,9 +4,9 @@ import axios from 'axios';
 const defaultUser = {};
 
 // Action Types
-const GET_USER = 'GET_USER';
-const REMOVE_USER = 'REMOVE_USER';
-const GET_UNREAD_MESSAGE_COUNTS = 'GET_UNREAD_MESSAGE_COUNTS';
+export const GET_USER = 'GET_USER';
+export const REMOVE_USER = 'REMOVE_USER';
+export const GET_UNREAD_MESSAGE_COUNTS = 'GET_UNREAD_MESSAGE_COUNTS';
 
 // Action Creators
 const getUser = user => ({ type: GET_USER, user });
