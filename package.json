@@ -4,11 +4,12 @@
   "description": "Chat Application for MSK Full Stack Engineering Coding Challenge",
   "main": "index.js",
   "scripts": {
+    "seed-and-start": "npm run seed & npm start",
     "start": "npm run start-server & npm run build-watch",
     "start-server": "nodemon server -w server",
     "build-watch": "webpack -w",
     "seed": "node seed.js",
-    "test": "mocha ."
+    "test": "mocha ./tests/setup.js ./tests"
   },
   "repository": {
     "type": "git",
@@ -50,11 +51,16 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
     "chai": "^4.2.0",
+    "chai-things": "^0.2.0",
     "css-loader": "^1.0.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
     "mocha": "^6.0.2",
     "nodemon": "^1.18.3",
     "style-loader": "^0.21.0",
+    "supertest": "^4.0.2",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0"
   }
