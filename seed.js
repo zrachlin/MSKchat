@@ -41,7 +41,7 @@ const seed = async () => {
     }),
     Message.create({
       userId: zr.id,
-      content: 'What is the biggest challenge your team is facing?',
+      content: 'What are the biggest challenges your team is facing?',
       channelId: questions.id,
     }),
     Message.create({
@@ -58,7 +58,7 @@ const seed = async () => {
     Message.create({
       userId: zr.id,
       content:
-        "What is your favorite part about working at MSK? What's the most frustrating part?",
+        "What is your favorite part about working at MSK? What's the most frustrating/difficult part?",
       channelId: questions.id,
     }),
   ]);
@@ -69,12 +69,6 @@ const seed = async () => {
       'I need to hire someone to do full-stack software development ASAP',
     channelId: jobs.id,
   });
-  const m2 = await Message.create({
-    userId: 1,
-    content: 'You should definitely hire Zach Rachlin!',
-    channelId: jobs.id,
-  });
-
   messages.push(m1, m2);
   console.log(`Seeded ${messages.length} messages.`);
 };
