@@ -69,7 +69,7 @@ const seed = async () => {
       'I need to hire someone to do full-stack software development ASAP',
     channelId: jobs.id,
   });
-  messages.push(m1, m2);
+  messages.push(m1);
   console.log(`Seeded ${messages.length} messages.`);
 };
 
