@@ -2,7 +2,13 @@
 
 ## Instructions for Running
 
-Assuming you already have `git` and `npm` installed, run the following in a terminal:
+### Prerequisites:
+
+- `node & npm` -> https://nodejs.org/en/download/
+- `PostgreSQL` -> https://www.postgresql.org/download/
+- `git` -> https://git-scm.com/
+
+Assuming you have the prerequisites installed, run the following in a terminal:
 
 ```
 git clone https://github.com/zrachlin/MSKchat
@@ -17,6 +23,8 @@ createdb mskchat
 ```
 
 Otherwise, create a database named `mskchat` however you normally do.
+
+**Important:** Go to `/server/db/db.js` and change the `connectionString` on line 6 to include your postgres credentials (replace `'your-username'` and `'your-password'` in the string). If you don't have credentials set up, the following should work instead: `'postgres://localhost:5432/mskchat'`
 
 To run the application your first time, execute the following:
 
@@ -76,5 +84,6 @@ The database will temporarily be cleared for testing purposes, but it should aut
 - File/image upload support
 
 ## Screenshots
+
 ![Login-Screen](/public/login-screen.png)
 ![Chatroom-Screen](/public/chatroom-screen.png)
