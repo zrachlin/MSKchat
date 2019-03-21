@@ -20,7 +20,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { handleClick, isLoggedIn, username, history } = this.props;
+    const { handleClick, isLoggedIn, username } = this.props;
 
     return (
       <nav>
@@ -29,7 +29,7 @@ class Navbar extends Component {
           <div>
             {/* The navbar will show this after you log in */}
             Hi {username}!
-            <a href="#" onClick={() => handleClick(history)}>
+            <a href="#" onClick={() => handleClick()}>
               Logout
             </a>
           </div>

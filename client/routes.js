@@ -10,7 +10,7 @@ import {
   NewChannelEntry,
   ChannelMessages,
 } from './components';
-import { me, fetchChannels, fetchMessages, fetchUnreadMessages } from './store';
+import { me, fetchChannels, fetchMessages } from './store';
 
 class Routes extends Component {
   componentDidMount() {

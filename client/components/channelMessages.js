@@ -31,7 +31,6 @@ class ChannelMessages extends Component {
     const channelMessages = this.props.messages.filter(
       message => message.channelId === channelId
     );
-    // console.log(channelMessages);
 
     return (
       <div>

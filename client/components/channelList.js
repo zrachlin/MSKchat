@@ -4,10 +4,6 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { fetchUnreadMessageCounts } from '../store';
 
 class ChannelList extends Component {
-  // componentDidMount() {
-  //   this.props.fetchUnreadMessageCounts();
-  // }
-
   createChannelLI(channel) {
     const { pathname, unreadCounts } = this.props;
     const channelId = Number(pathname.split('/').slice(-1));
